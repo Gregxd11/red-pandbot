@@ -6,29 +6,36 @@ module.exports = {
   args: true,
   usage: '<text>',
   execute(message, args) {
+    message.delete().catch((err) => console.log(err));
+
     const results = [];
+    const numbers = [
+      ':zero:',
+      ':one:',
+      ':two:',
+      ':three:',
+      ':four:',
+      ':five:',
+      ':six:',
+      ':seven:',
+      ':eight:',
+      ':nine:'
+    ];
+    const regex = /[^A-Za-z\s]/;
 
-    const test = args.map((word) => {
-      for (let i = 0; i < word.length; i++) {
-        if (parseInt(word[i])) {
-          return true;
-        }
-      }
-    });
+    let words = args.map((word) => word.replace(regex, '').split(''));
 
-    if (test.includes(true)) {
-      return message.channel.send("You can't include numbers!");
-    }
-
-    let words = args.map((word) => word.split(''));
     for (let i = 0; i < words.length; i++) {
-      words[i].forEach((letter) =>
-        results.push(`:regional_indicator_${letter.toLowerCase()}:`)
-      );
-      results.push(' ');
+      words[i].forEach((letter) => {
+        if (parseInt(letter)) {
+          results.push(numbers[letter]);
+        }
+        else {
+          results.push(`:regional_indicator_${letter.toLowerCase()}: `);
+        }
+      });
+      results.push('  ');
     }
-
-    console.log(results);
 
     message.channel.send(results.join(''));
   }
