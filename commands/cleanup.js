@@ -1,28 +1,25 @@
 const Discord = require('discord.js');
-
+const perms = require('../middleware/perms.js');
 module.exports = {
   name: 'cleanup',
   description: 'Cleans up messages in a channel',
   usage: '<number of messages to delete>',
   args: true,
   async execute(message, args) {
-    const author = message.author.id;
-
-    const isAllowed = await message.guild.members
-      .fetch(author)
-      .then((res) => res.hasPermission('ADMINISTRATOR'))
-      .catch(console.error);
+    const isAdmin = await perms.isAdmin(message);
 
     if (args[1]) {
       return message.channel.send(
         `No second arguments! Proper usage is !\`${name} ${usage}.\``
       );
     }
-    if (isAllowed) {
+    if (isAdmin) {
       message.channel.bulkDelete(args[0]);
     }
     else {
-      message.channel.send('Insufficient permissions!');
+      message.channel.send(
+        'You must be an admin of the server to use this command.'
+      );
     }
   }
 };
