@@ -10,7 +10,6 @@ module.exports = {
   aliases: [ 'user info', 'information' ],
   async execute(message, args) {
     if (!message.mentions.users.size) {
-      console.log(message);
       return message.reply(
         'you need to tag a user in order to get their information!'
       );
@@ -25,7 +24,7 @@ module.exports = {
 
     //START CARD DISPLAY
     const taggedUser = message.mentions.users.first();
-    const [ botPerms ] = await User.find({ discordId: taggedUser.id });
+    // const [ botPerms ] = await User.find({ discordId: taggedUser.id });
     let joinDate = new Date(
       message.mentions.members.first().joinedTimestamp
     ).toUTCString();
@@ -47,11 +46,12 @@ module.exports = {
           name: 'Roles:',
           value: roles,
           inline: true
-        },
-        {
-          name: 'Bot Permissions',
-          value: botPerms.rpRole
         }
+        // This is just to test the db
+        // {
+        //   name: 'Bot Permissions',
+        //   value: botPerms.rpRole
+        // }
       )
       .addFields({
         name: 'Time of post',

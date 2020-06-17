@@ -1,26 +1,23 @@
 [
-	{
-		"question": "What does 'Muda' mean?",
-		"answers": [ "Useless" ]
-	},
-	{
-		"question": "In the 'Stardust Crusaders' saga, what are most of the stands named after?",
-		"answers": [ "Tarot cards" ]
-	},
-	{
-		"question": "Jonathan Joestar's name was inspired by Jonathan's, which is a ____?",
-		"answers": [ "restaurant" ],
-		"fullAnswer": "A restaurant in Japan that serves western foods."
-	},
-	{
-		"question": "What's the name of the outro song from part 4?",
-		"answers": [ "I want you" ]
-	},
-	{
-		"question": "Finish this quote: Let's kill da _______, biiiiiiiitch",
-		"answers": [ "hoe" ]
-	},
-	{
-		"question": "What is Polar"
-	}
+  {
+    "question": "What does 'Muda' mean?",
+    "answers": [ "Useless" ]
+  },
+  {
+    "question": "In the 'Stardust Crusaders' saga, what are most of the stands named after?",
+    "answers": [ "Tarot cards" ]
+  },
+  {
+    "question": "Jonathan Joestar's name was inspired by Jonathan's, which is a ____?",
+    "answers": [ "restaurant" ],
+    "fullAnswer": "A restaurant in Japan that serves western foods."
+  },
+  {
+    "question": "What's the name of the outro song from part 4?",
+    "answers": [ "I want you" ]
+  },
+  {
+    "question": "Finish this quote: Let's kill da _______, biiiiiiiitch",
+    "answers": [ "hoe" ]
+  }
 ]

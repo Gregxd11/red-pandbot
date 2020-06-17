@@ -2,13 +2,13 @@ const perms = require('../middleware/perms.js');
 const User = require('../models/user.js');
 
 module.exports = {
-  name: 'setrole',
+  name: 'setbotperms',
   description:
     'Sets a role for permission levels for a user interacting with the bot',
   args: true,
   usage: '<@user>',
   async execute(message, args) {
-    const isAdmin = await perms.isAdmin(message);
+    const isAdmin = await perms.isServerAdmin(message);
     const taggedUser = message.mentions.users.first();
     if (isAdmin) {
       message.channel

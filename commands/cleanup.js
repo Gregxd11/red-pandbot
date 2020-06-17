@@ -6,7 +6,7 @@ module.exports = {
   usage: '<number of messages to delete>',
   args: true,
   async execute(message, args) {
-    const isAdmin = await perms.isAdmin(message);
+    const isAdmin = await perms.isServerAdmin(message);
 
     if (args[1]) {
       return message.channel.send(
