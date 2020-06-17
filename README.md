@@ -1,2 +1,2 @@
 # red-pandbot
-A discord.js bot 
+A discord.js bot created by Hex#0318
