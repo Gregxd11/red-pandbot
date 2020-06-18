@@ -1,5 +1,5 @@
-const User = require('../models/user.js');
-const perms = require('../middleware/perms.js');
+const User = require('../../models/user.js');
+const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'setbalance',
   description: 'Shows balance of bank',

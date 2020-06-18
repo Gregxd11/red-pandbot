@@ -1,5 +1,5 @@
-const perms = require('../middleware/perms.js');
-const User = require('../models/user.js');
+const perms = require('../../middleware/perms.js');
+const User = require('../../models/user.js');
 
 module.exports = {
   name: 'setbotperms',

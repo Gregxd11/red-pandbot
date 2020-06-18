@@ -1,5 +1,4 @@
-const Discord = require('discord.js');
-const quiz = require('../quiz.json');
+const quiz = require('../../quiz.json');
 
 module.exports = {
   name: 'jojo',
@@ -14,7 +13,7 @@ module.exports = {
     };
     message.channel.send(item.question).then(() => {
       message.channel
-        .awaitMessages(filter, { max: 1, time: 5000, errors: [ 'time' ] })
+        .awaitMessages(filter, { max: 1, time: 10000, errors: [ 'time' ] })
         .then((collected) => {
           message.channel.send(
             `${collected.first().author} got the correct answer!`

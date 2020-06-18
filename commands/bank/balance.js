@@ -1,5 +1,5 @@
-const User = require('../models/user.js');
-const perms = require('../middleware/perms.js');
+const User = require('../../models/user.js');
+const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'balance',
   description: 'Shows balance of bank',
@@ -10,10 +10,6 @@ module.exports = {
     const bank = {
       currency: 'pawpads'
     };
-    if (isBotAdmin) {
-      return message.channel.send(
-        `You have ${userDbInfo.balance} ${bank.currency}.`
-      );
-    }
+    message.channel.send(`You have ${userDbInfo.balance} ${bank.currency}.`);
   }
 };

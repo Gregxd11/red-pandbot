@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const perms = require('../middleware/perms.js');
+const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'cleanup',
   description: 'Cleans up messages in a channel',

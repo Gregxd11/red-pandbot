@@ -36,7 +36,6 @@ module.exports = {
       });
       results.push('  ');
     }
-
     message.channel.send(results.join(''));
   }
 };

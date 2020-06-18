@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const User = require('../models/user.js');
+const User = require('../../models/user.js');
 module.exports = {
   name: 'userinfo',
   description: 'Shows user info',

@@ -2,6 +2,8 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const mongoose = require('mongoose');
+const { isSymbol } = require('util');
+const { dirname } = require('path');
 
 mongoose.connect('mongodb://localhost/redpandbot', {
   useNewUrlParser: true,
@@ -16,14 +18,35 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 
-const commandFiles = fs
-  .readdirSync('./commands')
-  .filter((file) => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  client.commands.set(command.name, command);
+// Finds subdirectories in ./commands
+const commandsImport = fs.readdirSync('./commands', { withFileTypes: true });
+const commandDirs = [];
+for (const dir of commandsImport) {
+  if (dir.isDirectory()) {
+    commandDirs.push(dir);
+  }
 }
+// Pulls files from subdirectories in ./commands
+for (const dir of commandDirs) {
+  let dirName = dir.name;
+  let commandFiles = fs
+    .readdirSync(`./commands/${dirName}`)
+    .filter((file) => file.endsWith('.js'));
+  commandFiles.forEach((file) => {
+    if (file) {
+      const command = require(`./commands/${dirName}/${file}`);
+      client.commands.set(command.name, command);
+    }
+  });
+}
+// const commandFiles = fs
+//   .readdirSync('./commands')
+//   .filter((file) => file.endsWith('.js'));
+
+// for (const file of commandFiles) {
+//   const command = require(`./commands/${file}`);
+//   client.commands.set(command.name, command);
+// }
 
 client.once('ready', () => {
   console.log('Ready!');
