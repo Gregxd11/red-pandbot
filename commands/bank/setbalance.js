@@ -5,6 +5,7 @@ module.exports = {
   description: 'Shows balance of bank',
   args: true,
   usage: '<@user> <amount>',
+  guildOnly: true,
   async execute(message, args) {
     const isBotAdmin = await perms.isBotAdmin(message);
     const taggedUser = message.mentions.users.first();

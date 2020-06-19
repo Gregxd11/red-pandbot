@@ -3,6 +3,7 @@ const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'balance',
   description: 'Shows balance of bank',
+  guildOnly: true,
   async execute(message, args) {
     const isBotAdmin = await perms.isBotAdmin(message);
     const authorId = message.author.id;

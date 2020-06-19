@@ -1,9 +1,11 @@
 const perms = require('../../middleware/perms.js');
-const test2 = require('./test2.js');
 module.exports = {
-  name: 'test',
+  name: 'test2',
   description: 'For testing new commands',
+  queue: [],
   async execute(message, args) {
-    console.log(test2.queue);
+    for (let i = 0; i < 4; i++) {
+      this.queue.push(i);
+    }
   }
 };

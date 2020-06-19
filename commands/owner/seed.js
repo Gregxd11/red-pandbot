@@ -6,6 +6,7 @@ const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'seed',
   description: 'Seeds the bots database with existing guild members',
+  guildOnly: true,
   async execute(message, args) {
     const isBotOwner = await perms.isBotOwner(message);
     const currentMems = await message.guild.members

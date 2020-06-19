@@ -7,6 +7,7 @@ module.exports = {
     'Sets a role for permission levels for a user interacting with the bot',
   args: true,
   usage: '<@user>',
+  guildOnly: true,
   async execute(message, args) {
     const isAdmin = await perms.isServerAdmin(message);
     const taggedUser = message.mentions.users.first();

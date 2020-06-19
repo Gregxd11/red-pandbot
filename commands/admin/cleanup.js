@@ -5,6 +5,7 @@ module.exports = {
   description: 'Cleans up messages in a channel',
   usage: '<number of messages to delete>',
   args: true,
+  guildOnly: true,
   async execute(message, args) {
     const isAdmin = await perms.isServerAdmin(message);
 

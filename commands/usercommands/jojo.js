@@ -3,6 +3,7 @@ const quiz = require('../../quiz.json');
 module.exports = {
   name: 'jojo',
   description: "Jojo's quiz",
+  guildOnly: true,
   async execute(message, args) {
     let item = quiz[Math.floor(Math.random() * quiz.length)];
     //make filter to take value out of array so that same question isn't asked multiple times

@@ -6,6 +6,7 @@ const perms = require('../../middleware/perms.js');
 module.exports = {
   name: 'dbdrop',
   description: 'Drops a database',
+  guildOnly: true,
   async execute(message, args) {
     const isBotOwner = await perms.isBotOwner(message);
     if (isBotOwner) {
