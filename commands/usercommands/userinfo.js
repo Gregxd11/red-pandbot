@@ -9,22 +9,16 @@ module.exports = {
   guildOnly: true,
   aliases: [ 'user info', 'information' ],
   async execute(message, args) {
-    if (!message.mentions.users.size) {
-      return message.reply(
-        'you need to tag a user in order to get their information!'
-      );
-    }
+    const taggedUser = message.mentions.users.first();
 
     //HANDLING ROLES
     const rolesArr = message.mentions.members.first()._roles;
+    console.log(rolesArr);
     const roles = [];
     for (let role of rolesArr) {
-      roles.push(message.mentions.guild.roles.cache.get(`${role}`).name);
+      roles.push(`<@&${role}>`);
     }
-
     //START CARD DISPLAY
-    const taggedUser = message.mentions.users.first();
-    // const [ botPerms ] = await User.find({ discordId: taggedUser.id });
     let joinDate = new Date(
       message.mentions.members.first().joinedTimestamp
     ).toUTCString();
@@ -47,11 +41,6 @@ module.exports = {
           value: roles,
           inline: true
         }
-        // This is just to test the db
-        // {
-        //   name: 'Bot Permissions',
-        //   value: botPerms.rpRole
-        // }
       )
       .addFields({
         name: 'Time of post',

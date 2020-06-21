@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const mongoose = require('mongoose');
 const commandHandling = require('./eventhandlers/commandhandling.js');
+const memberUpdate = require('./eventhandlers/memberupdate.js');
+const messageUpdate = require('./eventhandlers/messageupdate.js');
 
 mongoose.connect('mongodb://localhost/redpandbot', {
   useNewUrlParser: true,
@@ -40,10 +42,22 @@ for (const dir of commandDirs) {
 
 client.once('ready', () => {
   console.log('Ready!');
+  client.user.setPresence({
+    activity: { name: 'with bamboo' },
+    status: 'active'
+  });
 });
 
 client.on('message', async (message) => {
   commandHandling(message, client, cooldowns);
+});
+
+client.on('messageUpdate', async (oldMessage, newMessage) => {
+  messageUpdate(oldMessage, newMessage, client);
+});
+
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+  memberUpdate(oldMember, newMember, client);
 });
 
 client.login(token);
